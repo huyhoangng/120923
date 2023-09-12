@@ -1,7 +1,7 @@
-Create database ToyzUnlimited
+﻿Create database ToyzUnlimited
 GO 
 Use ToyzUnlimited
-
+--Câu 1
 create table Toy(
 ProductCode int Primary key,
 Name nvarchar(30) ,
@@ -25,7 +25,7 @@ values (1,N'Xe dieu khien','dieu khien', 'Hotwheel','>5 years',$50,700,50),
 
 SELECT *FROM Toy
 GO
-
+--Câu 2
 CREATE PROCEDURE HeavyToys
 AS
 BEGIN
@@ -35,7 +35,7 @@ BEGIN
 END;
 EXEC HeavyToys;
 
-
+--Câu 3
 CREATE PROCEDURE #PriceIncrease
 AS
 BEGIN
@@ -44,7 +44,7 @@ BEGIN
 END;
 EXEC #PriceIncrease;
 
-
+--Câu 4
 CREATE PROCEDURE sp_QtyOnHand
 AS
 BEGIN
@@ -52,5 +52,5 @@ BEGIN
     SET QtyOnHand = QtyOnHand - 5;
 END;
 EXEC sp_QtyOnHand;
-
+--Câu 5 em để ở trong từng phần ạ 
 

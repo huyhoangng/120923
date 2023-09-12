@@ -36,14 +36,14 @@ END;
 EXEC HeavyToys;
 
 --Câu 3
-CREATE PROCEDURE #PriceIncrease
+CREATE PROCEDURE sp_PriceIncrease
 AS
 BEGIN
     UPDATE Toy
     SET UnitPrice = UnitPrice + 10;
 END;
-EXEC #PriceIncrease;
-
+EXEC sp_PriceIncrease;
+GO
 --Câu 4
 CREATE PROCEDURE sp_QtyOnHand
 AS
@@ -52,5 +52,40 @@ BEGIN
     SET QtyOnHand = QtyOnHand - 5;
 END;
 EXEC sp_QtyOnHand;
+GO
 --Câu 5 em để ở trong từng phần ạ 
 
+--Phần 3
+--Câu 1
+sp_helptext HeavyToys
+sp_helptext sp_PriceIncrease
+sp_helptext sp_QtyOnHand
+
+SELECT OBJECT_NAME(object_id) AS ProcedureName, definition
+FROM sys.sql_modules
+WHERE OBJECT_NAME(object_id) IN ('HeavyToys', 'sp_PriceIncrease', 'sp_QtyOnHand');
+
+
+--Câu 2
+sp_depends HeavyToys
+sp_depends sp_PriceIncrease
+sp_depends sp_QtyOnHand
+
+--Câu 3
+ALTER PROCEDURE sp_PriceIncrease
+AS
+BEGIN
+    UPDATE Toy
+    SET UnitPrice = UnitPrice + 10;
+
+SELECT * FROM Toy;
+END;
+
+ALTER PROCEDURE sp_QtyOnHand
+AS
+BEGIN
+    UPDATE Toy
+    SET QtyOnHand = QtyOnHand - 5;
+
+SELECT * FROM Toy;
+END;
